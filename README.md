@@ -34,4 +34,4 @@ Second Question :- Queries [ Q2. - Q1. Top 5 brands by receipts scanned among us
 
 
 
-![image alt]("query_2_save.png")
+![image alt]["query_2_save.png"]
