@@ -65,6 +65,21 @@ LIMIT 5;
 Q2. Open Ended Questions
 
 Who are Fetch’s power users?
+
+1. Who are Fetch’s power users?
+Assumptions:
+
+A power user is defined as someone who engages heavily with the Fetch app, which can include:
+Frequent receipt scanning (e.g., more than 2 scans per month).
+High cumulative spending on transactions.
+Long account tenure with consistent activity.
+Based on these assumptions, Fetch’s power users are likely those who:
+
+Have a High Number of Monthly Scans: Users scanning more than 20 receipts per month likely have higher engagement and are actively collecting points.
+Show High Cumulative Spending: Users with high cumulative FINAL_SALE values across transactions. These users likely use Fetch not just frequently but also for larger purchases, demonstrating greater buying power.
+Have Long Account Tenure and Consistent Activity: Users who have maintained their accounts for over a year and have scanned receipts regularly, indicating loyalty and long-term value.
+Identifying these power users would allow Fetch to tailor special incentives, such as exclusive discounts or reward tiers, to further enhance loyalty and engagement.
+
 SQL Query
 
 ```
@@ -127,8 +142,23 @@ ORDER BY
     h.total_spending DESC
 LIMIT 10;
 ```
+## Visual
+
+![image alt](![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/67b7484c3942a25f95b065856a6b69c86845435b/table_1.png))
 
 What is Top Dips and Salsa Category ?
+
+Assumptions:
+
+A leading brand is defined by either:
+The highest number of receipts scanned with purchases of its products in the "Dips & Salsa" category.
+Or, the highest total sales in the "Dips & Salsa" category.
+Answer: To determine the leading brand in the "Dips & Salsa" category, we would analyze:
+
+Receipt Count: The brand with the most scanned receipts in the "Dips & Salsa" category would indicate popularity or frequent purchases. This can suggest brand loyalty or a competitive advantage in market penetration.
+Sales Volume: Alternatively, the brand with the highest cumulative FINAL_SALE in this category represents the highest sales value, which could indicate premium positioning or preferred brand status among Fetch users.
+The leading brand in the "Dips & Salsa" category is likely one that combines both high receipt counts and high total sales, signifying both popularity and strong revenue contribution within this product category.
+
 SQL Query
 
 ```
@@ -172,6 +202,6 @@ SELECT
      LIMIT 1) AS leading_brand_by_total_sales;
 
 ```
-
+The answer is :- Tostitos
 
 
