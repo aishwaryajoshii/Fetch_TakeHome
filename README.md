@@ -28,7 +28,7 @@ The dataset initially faced several data quality issues that could hinder accura
    - Issue: Duplicate entries in the transactions table could inflate metrics such as transaction counts or total sales.
    - Resolution: Remove  duplicates based on key columns (`RECEIPT_ID`, `PURCHASE_DATE`, and `USER_ID`), ensuring each transaction is unique and providing accurate transaction data.
 
-Second Question :- Queries 
+Second Question :- Queries [ Close Ended Questions ]
 [ Q1. Top 5 brands by receipts scanned among users 21 and over ]
 
 Query 1 :-
@@ -61,3 +61,72 @@ ORDER BY total_sales DESC
 LIMIT 5;
 
 ![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/52bbfe4d67a9802156113c0c8fd959b1f658faad/query_2_save.png)
+
+Q2. Open Ended Questions
+
+Who are Fetch’s power users?
+SQL Query
+
+```
+WITH monthly_scans AS (
+    SELECT 
+        USER_ID,
+        YEAR(PURCHASE_DATE) AS year,
+        MONTH(PURCHASE_DATE) AS month,
+        COUNT(RECEIPT_ID) AS monthly_scan_count
+    FROM 
+        TRANSACTION_TAKEHOME
+    GROUP BY 
+        USER_ID, YEAR(PURCHASE_DATE), MONTH(PURCHASE_DATE)
+),
+frequent_users AS (
+    SELECT 
+        USER_ID,
+        AVG(monthly_scan_count) AS avg_monthly_scans
+    FROM 
+        monthly_scans
+    GROUP BY 
+        USER_ID
+    HAVING 
+        AVG(monthly_scan_count) > 2
+),
+high_spending_users AS (
+    SELECT 
+        USER_ID,
+        SUM(CAST(FINAL_SALE AS DECIMAL(10, 2))) AS total_spending
+    FROM 
+        TRANSACTION_TAKEHOME
+    GROUP BY 
+        USER_ID
+    HAVING 
+        SUM(CAST(FINAL_SALE AS DECIMAL(10, 2))) > 0
+),
+long_tenure_users AS (
+    SELECT 
+        ID AS USER_ID,
+        DATEDIFF(MONTH, CREATED_DATE, GETDATE()) AS account_age_months
+    FROM 
+        USER_TAKEHOME
+    WHERE 
+        DATEDIFF(MONTH, CREATED_DATE, GETDATE()) >= 12
+)
+SELECT 
+    u.ID AS User_ID,
+    f.avg_monthly_scans,
+    h.total_spending,
+    l.account_age_months
+FROM 
+    USER_TAKEHOME u
+JOIN 
+    frequent_users f ON u.ID = f.USER_ID
+JOIN 
+    high_spending_users h ON u.ID = h.USER_ID
+JOIN 
+    long_tenure_users l ON u.ID = l.USER_ID
+ORDER BY 
+    h.total_spending DESC
+LIMIT 10;
+
+
+
+```
