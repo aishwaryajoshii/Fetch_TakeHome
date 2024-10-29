@@ -30,8 +30,12 @@ The dataset initially faced several data quality issues that could hinder accura
 
 Second Question :- Queries [ Q2. - Q1. Top 5 brands by receipts scanned among users 21 and over ]
 
+SELECT p.BRAND, COUNT(t.RECEIPT_ID) AS receipt_count 
+FROM Transactions t JOIN Users u ON t.USER_ID = u.ID
+ JOIN Products p ON t.BARCODE = p.BARCODE 
+WHERE TIMESTAMPDIFF(YEAR, u.BIRTH_DATE, CURDATE()) >= 21 
+GROUP BY p.BRAND 
+ORDER BY receipt_count DESC;
 
 
-
-
-![image alt][https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/52bbfe4d67a9802156113c0c8fd959b1f658faad/query_2_save.png]
+![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/52bbfe4d67a9802156113c0c8fd959b1f658faad/query_2_save.png)
