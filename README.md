@@ -28,7 +28,10 @@ The dataset initially faced several data quality issues that could hinder accura
    - Issue: Duplicate entries in the transactions table could inflate metrics such as transaction counts or total sales.
    - Resolution: Remove  duplicates based on key columns (`RECEIPT_ID`, `PURCHASE_DATE`, and `USER_ID`), ensuring each transaction is unique and providing accurate transaction data.
 
-Second Question :- Queries [ Q2. - Q1. Top 5 brands by receipts scanned among users 21 and over ]
+Second Question :- Queries 
+[ Q1. Top 5 brands by receipts scanned among users 21 and over ]
+
+Query 1 :-
 
 SELECT p.BRAND, COUNT(t.RECEIPT_ID) AS receipt_count 
 FROM Transactions t JOIN Users u ON t.USER_ID = u.ID
@@ -37,5 +40,24 @@ WHERE TIMESTAMPDIFF(YEAR, u.BIRTH_DATE, CURDATE()) >= 21
 GROUP BY p.BRAND 
 ORDER BY receipt_count DESC;
 
+![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/23e58f7b99359d38d5eedfa4afa07c5d5179bc73/Query_1.png)
+
+[ Q2. What are the top 5 brands by sales among users that have had their account for at least six months? ]
+Query 2 :- 
+
+WITH account_filtered_users AS (
+ SELECT ID AS user_id,
+  CREATED_DATE
+  FROM 
+   USER_TAKEHOME WHERE CREATED_DATE <= DATEADD(MONTH, -6, GETDATE()))
+SELECT p.BRAND,
+SUM(CAST(t.FINAL_SALE AS DECIMAL(10, 2))) AS total_sales
+FROM TRANSACTION_TAKEHOME t
+JOIN 
+account_filtered_users u ON t.USER_ID = u.user_id
+JOIN PRODUCTS_TAKEHOME p ON t.BARCODE = p.BARCODE
+GROUP BY p.BRAND
+ORDER BY total_sales DESC
+LIMIT 5;
 
 ![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/52bbfe4d67a9802156113c0c8fd959b1f658faad/query_2_save.png)
