@@ -45,20 +45,17 @@ ORDER BY receipt_count DESC;
 ### Q2. What are the top 5 brands by sales among users that have had their account for at least six months? 
 Query 2 :- 
 
-WITH account_filtered_users AS (
- SELECT ID AS user_id,
-  CREATED_DATE
-  FROM 
-   USER_TAKEHOME WHERE CREATED_DATE <= DATEADD(MONTH, -6, GETDATE()))
-SELECT p.BRAND,
-SUM(CAST(t.FINAL_SALE AS DECIMAL(10, 2))) AS total_sales
-FROM TRANSACTION_TAKEHOME t
-JOIN 
-account_filtered_users u ON t.USER_ID = u.user_id
-JOIN PRODUCTS_TAKEHOME p ON t.BARCODE = p.BARCODE
-GROUP BY p.BRAND
-ORDER BY total_sales DESC
+'''
+SELECT p.BRAND, COUNT(t.RECEIPT_ID) AS receipt_count 
+FROM Transactions t JOIN Users u ON t.USER_ID = u.ID
+ JOIN Products p ON t.BARCODE = p.BARCODE 
+WHERE TIMESTAMPDIFF(YEAR, u.BIRTH_DATE, CURDATE()) >= 21 
+GROUP BY p.BRAND 
+ORDER BY receipt_count DESC 
 LIMIT 5;
+
+'''
+
 
 ![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/52bbfe4d67a9802156113c0c8fd959b1f658faad/query_2_save.png)
 
