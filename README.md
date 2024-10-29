@@ -62,9 +62,9 @@ LIMIT 5;
 
 ![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/52bbfe4d67a9802156113c0c8fd959b1f658faad/query_2_save.png)
 
-Second Question [Open Ended Questions]
+## Second Question [Open Ended Questions]
 
-- Who are Fetch’s power users?
+### Who are Fetch’s power users?
 
 Assumptions:
 
@@ -145,7 +145,7 @@ LIMIT 10;
 
 ![image alt](![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/67b7484c3942a25f95b065856a6b69c86845435b/table_1.png))
 
-- What is Top Dips and Salsa Category ?
+### What is Top Dips and Salsa Category ?
 
 Assumptions:
 
