@@ -126,7 +126,52 @@ JOIN
 ORDER BY 
     h.total_spending DESC
 LIMIT 10;
+```
 
-
+What is Top Dips and Salsa Category ?
+SQL Query
 
 ```
+WITH dips_and_salsa_products AS (
+    SELECT 
+        BARCODE,
+        BRAND
+    FROM 
+        PRODUCTS_TAKEHOME
+    WHERE 
+        CATEGORY_2 = 'Dips & Salsa' 
+        AND BRAND != 'Not Provided'
+),
+
+-- Join the filtered Dips & Salsa products with transactions to get transaction data
+dips_and_salsa_transactions AS (
+    SELECT 
+        t.RECEIPT_ID,
+        t.FINAL_SALE,
+        p.BRAND
+    FROM 
+        TRANSACTION_TAKEHOME t
+    INNER JOIN 
+        dips_and_salsa_products p ON t.BARCODE = p.BARCODE
+)
+
+-- Query to get the leading brand by receipt count and by total sales
+SELECT 
+    -- Leading brand by receipt count
+    (SELECT BRAND 
+     FROM dips_and_salsa_transactions 
+     GROUP BY BRAND 
+     ORDER BY COUNT(RECEIPT_ID) DESC 
+     LIMIT 1) AS leading_brand_by_receipt_count,
+
+    -- Leading brand by total sales
+    (SELECT BRAND 
+     FROM dips_and_salsa_transactions 
+     GROUP BY BRAND 
+     ORDER BY SUM(FINAL_SALE) DESC 
+     LIMIT 1) AS leading_brand_by_total_sales;
+
+```
+
+
+
