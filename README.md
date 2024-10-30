@@ -225,6 +225,7 @@ Highlights:
 We’re seeing a "power user" group – users who scan receipts often, spend more, and have been with us for over a year. This group could be great for loyalty programs.
 Some data gaps in Dips & Salsa: Many products have "Not Provided" as the brand, which makes it hard to identify top brands in that category.
 Quantity and sales fields have some inconsistencies (e.g., missing values, "zero" entries) that needed extra cleaning.
+
 Next Steps: Could use some help with:
 Clarification on "Not Provided" brand entries – are they placeholders or actual gaps?
 Possible support from Data Eng. to automate data validation for key fields.
