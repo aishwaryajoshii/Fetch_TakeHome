@@ -81,7 +81,7 @@ High cumulative spending on transactions.
 Long account tenure with consistent activity.
 Based on these assumptions, Fetch’s power users are likely those who:
 
-Have a High Number of Monthly Scans: Users scanning more than 20 receipts per month likely have higher engagement and are actively collecting points.
+Have a High Number of Monthly Scans: Users scanning more than 2 receipts per month likely have higher engagement and are actively collecting points.
 Show High Cumulative Spending: Users with high cumulative FINAL_SALE values across transactions. These users likely use Fetch not just frequently but also for larger purchases, demonstrating greater buying power.
 Have Long Account Tenure and Consistent Activity: Users who have maintained their accounts for over a year and have scanned receipts regularly, indicating loyalty and long-term value.
 Identifying these power users would allow Fetch to tailor special incentives, such as exclusive discounts or reward tiers, to further enhance loyalty and engagement.
