@@ -227,8 +227,8 @@ Some data gaps in Dips & Salsa: Many products have "Not Provided" as the brand, 
 Quantity and sales fields have some inconsistencies (e.g., missing values, "zero" entries) that needed extra cleaning.
 
 Next Steps: Could use some help with:
-Clarification on "Not Provided" brand entries – are they placeholders or actual gaps?
-Possible support from Data Eng. to automate data validation for key fields.
+- Clarification on "Not Provided" brand entries – are they placeholders or actual gaps?
+- Possible support from Data Eng. to automate data validation for key fields.
 Let me know if you’d like more details or have thoughts on this! Thanks! 🙏
 
 
