@@ -29,7 +29,7 @@ The dataset initially faced several data quality issues that could hinder accura
    - Resolution: Remove  duplicates based on key columns (`RECEIPT_ID`, `PURCHASE_DATE`, and `USER_ID`), ensuring each transaction is unique and providing accurate transaction data.
 
 ## Second Question :- Queries [ Close Ended Questions ]
-### Q1. Top 5 brands by receipts scanned among users 21 and over 
+### Q1. Top 5 brands by receipts scanned among users 21 and over [Visuals for the query results are in the Jupyter Notebook ]
 
 Query 1 :-
 
@@ -44,7 +44,7 @@ ORDER BY receipt_count DESC;
 
 ![image alt](https://github.com/aishwaryajoshii/Fetch_TakeHome/blob/23e58f7b99359d38d5eedfa4afa07c5d5179bc73/Query_1.png)
 
-### Q2. What are the top 5 brands by sales among users that have had their account for at least six months? 
+### Q2. What are the top 5 brands by sales among users that have had their account for at least six months? [Visuals for the query results are in the Jupyter Notebook ]
 Query 2 :- 
 
 ```
