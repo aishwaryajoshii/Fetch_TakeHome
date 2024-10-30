@@ -210,4 +210,24 @@ SELECT
 ```
 The answer is :- Tostitos
 
+## Third Section :- 
+### communicate with stakeholders
+### Construct an email or slack message that is understandable to a product or business leader who is not familiar with your day-to-day work. Summarize the results of your investigation. Include:
+### Key data quality issues and outstanding questions about the data
+### One interesting trend in the data
+### Use a finding from part 2 or come up with a new insight
+### Request for action: explain what additional help, info, etc. you need to make sense of the data and resolve any outstanding issues
+
+Slack Message 
+
+Hey xyz ! 👋 Quick update on the Fetch data analysis:
+Highlights:
+We’re seeing a "power user" group – users who scan receipts often, spend more, and have been with us for over a year. This group could be great for loyalty programs.
+Some data gaps in Dips & Salsa: Many products have "Not Provided" as the brand, which makes it hard to identify top brands in that category.
+Quantity and sales fields have some inconsistencies (e.g., missing values, "zero" entries) that needed extra cleaning.
+Next Steps: Could use some help with:
+Clarification on "Not Provided" brand entries – are they placeholders or actual gaps?
+Possible support from Data Eng. to automate data validation for key fields.
+Let me know if you’d like more details or have thoughts on this! Thanks! 🙏
+
 
